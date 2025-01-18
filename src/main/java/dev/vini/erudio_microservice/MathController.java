@@ -1,5 +1,6 @@
 package dev.vini.erudio_microservice;
 
+import dev.vini.erudio_microservice.exception.UnsupportedMathOperationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +20,7 @@ public class MathController {
     ) throws Exception{
 
         if(!isNumeric(numberOne) || !isNumeric(numberTwo)){
-            throw new Exception();
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
         }
 
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
