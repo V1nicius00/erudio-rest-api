@@ -69,7 +69,7 @@ public class MathController {
     }
 
     @RequestMapping("/squareroot/{number}")
-    public Double squareroot(
+    public Double squareRoot(
             @PathVariable(value = "number") String number
     ) throws Exception{
         if(!isNumeric(number)){
