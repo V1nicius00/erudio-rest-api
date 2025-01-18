@@ -26,6 +26,19 @@ public class MathController {
         return convertToDouble(numberOne) + convertToDouble(numberTwo);
     }
 
+    @RequestMapping("/sub/{numberOne}/{numberTwo}")
+    public Double subtraction(
+            @PathVariable(value = "numberOne") String numberOne,
+            @PathVariable(value = "numberTwo") String numberTwo
+    ) throws Exception{
+
+        if(!isNumeric(numberOne) || !isNumeric(numberTwo)){
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
+        }
+
+        return convertToDouble(numberOne) - convertToDouble(numberTwo);
+    }
+
     private Double convertToDouble(String strNumber) {
         if(strNumber == null) return 0D;
         String number = strNumber.replace(",",".");
