@@ -65,6 +65,18 @@ public class MathController {
         return convertToDouble(numberOne) / convertToDouble(numberTwo);
     }
 
+    @RequestMapping("/squareroot/{number}")
+    public Double squareroot(
+            @PathVariable(value = "number") String number
+    ) throws Exception{
+
+        if(!isNumeric(number)){
+            throw new UnsupportedMathOperationException("Please set a numeric value!");
+        }
+
+        return Math.sqrt(convertToDouble(number));
+    }
+
     private Double convertToDouble(String strNumber) {
         if(strNumber == null) return 0D;
         String number = strNumber.replace(",",".");
