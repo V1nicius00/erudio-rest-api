@@ -43,6 +43,11 @@ public class PersonService {
         return person;
     }
 
+    public Person update(Person person){
+        logger.info("Updating one person...");
+        return person;
+    }
+
     private Person mockPeople(int i){
         Person person = new Person();
         person.setId(counter.incrementAndGet());
