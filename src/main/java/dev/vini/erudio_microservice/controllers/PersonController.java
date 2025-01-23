@@ -43,4 +43,9 @@ public class PersonController {
     public Person update(@RequestBody Person person){
         return personService.create(person);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    public void delete(@RequestBody String id){
+        personService.delete(id);
+    }
 }
