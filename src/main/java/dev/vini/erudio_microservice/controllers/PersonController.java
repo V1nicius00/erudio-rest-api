@@ -1,6 +1,6 @@
 package dev.vini.erudio_microservice.controllers;
 
-import dev.vini.erudio_microservice.model.Person;
+import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.services.PersonService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

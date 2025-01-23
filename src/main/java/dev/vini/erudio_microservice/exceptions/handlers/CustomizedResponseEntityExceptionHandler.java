@@ -1,7 +1,7 @@
-package dev.vini.erudio_microservice.exception.handler;
+package dev.vini.erudio_microservice.exceptions.handlers;
 
-import dev.vini.erudio_microservice.exception.ExceptionResponse;
-import dev.vini.erudio_microservice.exception.UnsupportedMathOperationException;
+import dev.vini.erudio_microservice.exceptions.ExceptionResponse;
+import dev.vini.erudio_microservice.exceptions.UnsupportedMathOperationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

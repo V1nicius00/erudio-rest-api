@@ -1,4 +1,4 @@
-package dev.vini.erudio_microservice.model;
+package dev.vini.erudio_microservice.models;
 
 import jakarta.persistence.*;
 

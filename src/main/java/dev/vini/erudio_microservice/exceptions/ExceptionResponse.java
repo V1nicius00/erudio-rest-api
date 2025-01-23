@@ -1,4 +1,4 @@
-package dev.vini.erudio_microservice.exception;
+package dev.vini.erudio_microservice.exceptions;
 
 import java.io.Serializable;
 import java.util.Date;

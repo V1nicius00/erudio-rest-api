@@ -1,9 +1,8 @@
 package dev.vini.erudio_microservice.services;
 
-import dev.vini.erudio_microservice.model.Person;
+import dev.vini.erudio_microservice.models.Person;
 import org.springframework.stereotype.Service;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
