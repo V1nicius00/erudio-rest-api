@@ -38,6 +38,11 @@ public class PersonService {
         return persons;
     }
 
+    public Person create(Person person){
+        logger.info("Creating one person...");
+        return person;
+    }
+
     private Person mockPeople(int i){
         Person person = new Person();
         person.setId(counter.incrementAndGet());
