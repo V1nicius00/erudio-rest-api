@@ -1,1 +1,12 @@
-spring.application.name=erudio-microservice
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: postgres
+    password: password
+    driverClassName: org.postgresql.Driver
