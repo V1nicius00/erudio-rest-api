@@ -28,6 +28,11 @@ public class PersonService {
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
     }
 
+    public List<Person> findByGender(String gender){
+        logger.info("Finding all {$gender} persons...");
+        return personRepository.findByGender(gender);
+    }
+
     public List<Person> findAllPeople() {
         return personRepository.findAll();
     }
