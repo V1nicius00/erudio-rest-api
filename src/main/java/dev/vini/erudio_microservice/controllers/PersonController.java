@@ -17,7 +17,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @RequestMapping(value = "/{id}",
+    @RequestMapping(value = "/id/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Person findById(@PathVariable(value = "id") Long id){
