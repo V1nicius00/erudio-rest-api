@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
-    List<Person> findByGender();
+    List<Person> findByGender(String gender);
 }
