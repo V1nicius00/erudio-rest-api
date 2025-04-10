@@ -29,7 +29,7 @@ public class PersonService {
     }
 
     public List<Person> findByGender(String gender){
-        logger.info("Finding all {$gender} persons...");
+        logger.info("Finding all {} persons...", gender);
         return personRepository.findByGender(gender);
     }
 
