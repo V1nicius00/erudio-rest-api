@@ -23,9 +23,7 @@ public class PersonService {
     }
 
     public Person findbyId(Long id){
-
         logger.info("Finding one person...");
-
         return personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
     }
@@ -40,16 +38,13 @@ public class PersonService {
     }
 
     public Person update(Person person){
-
         logger.info("Updating one person...");
         Person entity = personRepository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
-
         entity.setFirstName(person.getFirstName());
         entity.setLastName(person.getLastName());
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
-
         return personRepository.save(person);
     }
 
