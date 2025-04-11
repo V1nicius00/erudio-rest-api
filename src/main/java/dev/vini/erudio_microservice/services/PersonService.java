@@ -30,7 +30,7 @@ public class PersonService {
 
     public List<Person> findByGender(String gender){
         logger.info("Finding all" + gender +  " persons...");
-        return personRepository.findByGender(gender);
+        return personRepository.findByGenderIgnoreCase(gender);
     }
 
     public List<Person> findAllPeople() {
