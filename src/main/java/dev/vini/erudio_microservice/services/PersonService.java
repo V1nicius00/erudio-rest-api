@@ -22,7 +22,7 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person findbyId(Long id){
+    public Person findById(Long id){
         logger.info("Finding one person...");
         return personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
