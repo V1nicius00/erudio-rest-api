@@ -48,7 +48,7 @@ public class PersonController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public Person update(@RequestBody Person person){
-        return personService.create(person);
+        return personService.update(person);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
