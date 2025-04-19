@@ -23,7 +23,7 @@ public class PersonService {
     }
 
     public Person findById(Long id){
-        logger.info("Finding one person...");
+        logger.info("Finding person...");
         return personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
     }
@@ -38,12 +38,12 @@ public class PersonService {
     }
 
     public Person create(Person person){
-        logger.info("Creating one person...");
+        logger.info("Creating person...");
         return personRepository.save(person);
     }
 
     public Person update(Person person){
-        logger.info("Updating one person...");
+        logger.info("Updating person...");
         Person entity = personRepository.findById(person.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
         entity.setFirstName(person.getFirstName());
@@ -54,7 +54,7 @@ public class PersonService {
     }
 
     public void delete(Long id){
-        logger.info("Deleting one person...");
+        logger.info("Deleting person...");
         Person entity = personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
         personRepository.delete(entity);
