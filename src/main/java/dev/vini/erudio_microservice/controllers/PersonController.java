@@ -24,16 +24,12 @@ public class PersonController {
         return personService.findById(id);
     }
 
-    @RequestMapping(value = "/gender/{gender}",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findByGender(@PathVariable(value = "gender") String gender){
-        return personService.findByGender(gender);
-    }
-
     @RequestMapping(method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAllPeople(){
+    public List<Person> findAllPeople(@RequestParam(value = "gender") String gender){
+        if(gender != null && !gender.isBlank()){
+            return personService.findByGender(gender);
+        }
         return personService.findAllPeople();
     }
 
