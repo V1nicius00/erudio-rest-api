@@ -51,8 +51,9 @@ public class PersonController {
         return personService.update(person);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public void delete(@RequestBody Long id){
+    @RequestMapping(value = "/{id}",
+            method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id){
         personService.delete(id);
     }
 }
