@@ -1,5 +1,6 @@
 package dev.vini.erudio_microservice.controllers;
 
+import dev.vini.erudio_microservice.data.dto.PersonDTO;
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.services.PersonService;
 import org.springframework.http.MediaType;
@@ -19,12 +20,12 @@ public class PersonController {
 
     @GetMapping(value = "/id/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(value = "id") Long id){
+    public PersonDTO findById(@PathVariable(value = "id") Long id){
         return personService.findById(id);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAllPeople(@RequestParam(value = "gender") String gender){
+    public List<PersonDTO> findAllPeople(@RequestParam(value = "gender") String gender){
         if(gender != null && !gender.isBlank()){
             return personService.findByGender(gender);
         }
@@ -33,13 +34,13 @@ public class PersonController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@RequestBody Person person){
+    public PersonDTO create(@RequestBody PersonDTO person){
         return personService.create(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(@RequestBody Person person){
+    public PersonDTO update(@RequestBody PersonDTO person){
         return personService.update(person);
     }
 

@@ -1,14 +1,14 @@
 package dev.vini.erudio_microservice.services;
 
+import dev.vini.erudio_microservice.data.dto.PersonDTO;
 import dev.vini.erudio_microservice.exceptions.ResourceNotFoundException;
+import static dev.vini.erudio_microservice.mapper.ObjectMapper.parseObject;
+import static dev.vini.erudio_microservice.mapper.ObjectMapper.parseListObjects;
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.repositories.PersonRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Logger;
 
 @Service
@@ -22,35 +22,37 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public Person findById(Long id){
+    public PersonDTO findById(Long id){
         logger.info("Finding person...");
-        return personRepository.findById(id)
+        var entity = personRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
+        return parseObject(entity, PersonDTO.class);
     }
 
-    public List<Person> findByGender(String gender){
+    public List<PersonDTO> findByGender(String gender){
         logger.info("Finding all " + gender +  " persons...");
-        return personRepository.findByGenderIgnoreCase(gender);
+        return parseListObjects(personRepository.findByGenderIgnoreCase(gender), PersonDTO.class);
     }
 
-    public List<Person> findAllPeople() {
-        return personRepository.findAll();
+    public List<PersonDTO> findAllPeople() {
+        return parseListObjects(personRepository.findAll(), PersonDTO.class);
     }
 
-    public Person create(Person person){
+    public PersonDTO create(PersonDTO personDto){
         logger.info("Creating person...");
-        return personRepository.save(person);
+        var entity = parseObject(personDto, Person.class);
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
 
-    public Person update(Person person){
+    public PersonDTO update(PersonDTO personDto){
         logger.info("Updating person...");
-        Person entity = personRepository.findById(person.getId())
+        Person entity = personRepository.findById(personDto.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
-        entity.setFirstName(person.getFirstName());
-        entity.setLastName(person.getLastName());
-        entity.setAddress(person.getAddress());
-        entity.setGender(person.getGender());
-        return personRepository.save(person);
+        entity.setFirstName(personDto.getFirstName());
+        entity.setLastName(personDto.getLastName());
+        entity.setAddress(personDto.getAddress());
+        entity.setGender(personDto.getGender());
+        return parseObject(personRepository.save(entity), PersonDTO.class);
     }
 
     public void delete(Long id){
