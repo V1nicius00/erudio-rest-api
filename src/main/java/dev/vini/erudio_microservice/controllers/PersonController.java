@@ -26,7 +26,7 @@ public class PersonController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<PersonDTO> findAllPeople(@RequestParam(value = "gender") String gender){
+    public List<PersonDTO> findAllPeople(@RequestParam(value = "gender", required = false) String gender){
         if(gender != null && !gender.isBlank()){
             return personService.findByGender(gender);
         }
