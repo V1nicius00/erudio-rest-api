@@ -4,6 +4,7 @@ import dev.vini.erudio_microservice.data.dto.PersonDTO;
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.services.PersonService;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,7 +46,8 @@ public class PersonController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id){
         personService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
