@@ -25,7 +25,7 @@ public class PersonDTO implements Serializable {
     @JsonProperty("address")
     private String address;
 
-    @JsonProperty("address")
+    @JsonProperty("gender")
     @JsonSerialize(using = GenderSerializer.class)
     private String gender;
 
