@@ -2,6 +2,8 @@ package dev.vini.erudio_microservice.data.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dev.vini.erudio_microservice.serializer.GenderSerializer;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -24,6 +26,7 @@ public class PersonDTO implements Serializable {
     private String address;
 
     @JsonProperty("address")
+    @JsonSerialize(using = GenderSerializer.class)
     private String gender;
 
     public PersonDTO() {
