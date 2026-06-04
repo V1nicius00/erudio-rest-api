@@ -10,6 +10,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.repositories.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,11 +21,8 @@ public class PersonService {
 
     private Logger logger = Logger.getLogger(PersonService.class.getName());
 
-    private final PersonRepository personRepository;
-
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
+    @Autowired
+    private  PersonRepository personRepository;
 
     public PersonDTO findById(Long id){
         logger.info("Finding person...");
