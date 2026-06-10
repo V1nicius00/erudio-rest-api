@@ -73,7 +73,7 @@ class PersonServiceTest {
         assertNotNull(result.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
@@ -127,7 +127,7 @@ class PersonServiceTest {
         assertNotNull(result.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
@@ -195,7 +195,7 @@ class PersonServiceTest {
         assertNotNull(result.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
@@ -279,7 +279,7 @@ class PersonServiceTest {
         assertNotNull(personOne.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
@@ -324,7 +324,7 @@ class PersonServiceTest {
         assertNotNull(personFour.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
@@ -369,7 +369,7 @@ class PersonServiceTest {
         assertNotNull(personEleven.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("update")
                         && link.getHref().endsWith("/api/person/v1")
-                        && link.getType().equals("UPDATE")
+                        && link.getType().equals("PUT")
                 )
         );
 
