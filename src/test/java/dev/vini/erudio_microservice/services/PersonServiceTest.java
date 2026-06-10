@@ -1,6 +1,7 @@
 package dev.vini.erudio_microservice.services;
 
 import dev.vini.erudio_microservice.data.dto.PersonDTO;
+import dev.vini.erudio_microservice.exceptions.RequiredObjectIsNullException;
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.repositories.PersonRepository;
 import dev.vini.erudio_microservice.unittests.mapper.mocks.MockPerson;
@@ -15,8 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -144,6 +144,19 @@ class PersonServiceTest {
     }
 
     @Test
+    void testCreateWithNullPerson() {
+        Exception exception = assertThrows(RequiredObjectIsNullException.class,
+                () -> {
+                    service.create(null);
+                });
+
+        String expectedMessage = "It is not allowed to persist a null object.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     void update() {
         Person person = input.mockEntity(1);
         Person persisted = person;
@@ -199,6 +212,19 @@ class PersonServiceTest {
     }
 
     @Test
+    void testUpdateWithNullPerson() {
+        Exception exception = assertThrows(RequiredObjectIsNullException.class,
+                () -> {
+                    service.update(null);
+                });
+
+        String expectedMessage = "It is not allowed to persist a null object.";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
     void delete() {
         Person person = input.mockEntity(1);
         person.setId(1L);
@@ -207,6 +233,7 @@ class PersonServiceTest {
         service.delete(1L);
         verify(personRepository, times(1)).findById(anyLong());
         verify(personRepository, times(1)).delete(any(Person.class));
+        verifyNoMoreInteractions(personRepository);
     }
 
     @Test

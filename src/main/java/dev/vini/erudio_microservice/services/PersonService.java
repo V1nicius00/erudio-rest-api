@@ -2,6 +2,7 @@ package dev.vini.erudio_microservice.services;
 
 import dev.vini.erudio_microservice.controllers.PersonController;
 import dev.vini.erudio_microservice.data.dto.PersonDTO;
+import dev.vini.erudio_microservice.exceptions.RequiredObjectIsNullException;
 import dev.vini.erudio_microservice.exceptions.ResourceNotFoundException;
 import static dev.vini.erudio_microservice.mapper.ObjectMapper.parseObject;
 import static dev.vini.erudio_microservice.mapper.ObjectMapper.parseListObjects;
@@ -47,6 +48,9 @@ public class PersonService {
     }
 
     public PersonDTO create(PersonDTO personDto){
+
+        if(personDto == null) throw new RequiredObjectIsNullException();
+
         logger.info("Creating person...");
         var entity = parseObject(personDto, Person.class);
         var dto = parseObject(personRepository.save(entity), PersonDTO.class);
@@ -55,6 +59,9 @@ public class PersonService {
     }
 
     public PersonDTO update(PersonDTO personDto){
+
+        if(personDto == null) throw new RequiredObjectIsNullException();
+
         logger.info("Updating person...");
         Person entity = personRepository.findById(personDto.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("Person not found!"));
