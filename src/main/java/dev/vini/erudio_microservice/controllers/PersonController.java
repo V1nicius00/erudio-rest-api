@@ -3,6 +3,7 @@ package dev.vini.erudio_microservice.controllers;
 import dev.vini.erudio_microservice.data.dto.PersonDTO;
 import dev.vini.erudio_microservice.models.Person;
 import dev.vini.erudio_microservice.services.PersonService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/person/v1")
+@Tag(name="People", description = "Endpoints for managing people")
 public class PersonController {
 
     private final PersonService personService;
